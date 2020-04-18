@@ -31,6 +31,15 @@ function writeToLog(
 
 function calculateResult(calculationType) {
   const enteredNumber = getUserNumberInput();
+  if (
+    calculationType !== 'ADD' &&
+    calculationType !== 'SUB' &&
+    calculationType !== 'MUL' &&
+    calculationType !== 'DIV' ||
+    !enteredNumber
+  ) {
+    return;
+  }
   const initialResult = currentResult;
   let mathOper;
   if (calculationType == "ADD") {
@@ -42,7 +51,7 @@ function calculateResult(calculationType) {
   } else if (calculationType == "MUL") {
     currentResult *= enteredNumber;
     mathOper = "*";
-  } else {
+  } else if (calculationType == "DIV") {
     currentResult /= enteredNumber;
     mathOper = "/";
   }
